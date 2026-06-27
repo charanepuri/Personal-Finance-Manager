@@ -1,0 +1,101 @@
+/* ==========================================
+   CALENDAR PAGE
+========================================== */
+
+.calendar-container {
+    background: var(--surface);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendar-header h2 {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+}
+
+.calendar-day-name {
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding-bottom: 10px;
+}
+
+.day {
+    position: relative;
+    height: 80px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.day:hover {
+    background-color: var(--surface-hover);
+}
+
+.day-number {
+    font-weight: 500;
+}
+
+.transaction-dot {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--primary);
+}
+
+.day-transactions {
+    margin-top: 20px;
+}
+
+.day-transactions h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.transaction-card-mini {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: var(--surface-hover);
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+}
+
+.transaction-card-mini .transaction-info strong {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.transaction-card-mini .transaction-info small {
+    color: var(--text-secondary);
+}
+
+.transaction-card-mini .transaction-amount {
+    font-weight: 600;
+    font-size: 16px;
+}

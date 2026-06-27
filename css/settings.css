@@ -1,0 +1,35 @@
+/* ==========================================
+   SETTINGS PAGE
+========================================== */
+
+.settings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.setting-card {
+    background: var(--surface);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.setting-card h3 {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: auto; /* Pushes title to the top */
+}
+
+.setting-card button,
+.setting-card input[type="file"] {
+    width: 100%;
+}
+
+.setting-card input[type="file"] {
+    cursor: pointer;
+}

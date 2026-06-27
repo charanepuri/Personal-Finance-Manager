@@ -1,0 +1,305 @@
+/* ==========================================
+   DASHBOARD CARDS
+========================================== */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .dashboard {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Laptop */
+@media (min-width: 1024px) {
+    .dashboard {
+        grid-template-columns: 2fr 1fr 1fr;
+    }
+}
+
+.balance-card {
+    background: linear-gradient(135deg, var(--primary), #6366F1);
+    color: white;
+    border-radius: 20px;
+    padding: 25px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: var(--shadow-lg);
+    grid-column: 1 / -1; /* Full width on smaller grids */
+}
+
+@media (min-width: 768px) {
+    .balance-card {
+        padding: 30px;
+    }
+}
+@media (min-width: 1024px) {
+    .balance-card {
+        grid-column: auto;
+    }
+}
+
+.balance-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    opacity: .9;
+}
+
+.balance-card h1 {
+    font-size: 40px;
+    margin: 15px 0;
+    font-weight: 700;
+}
+
+.balance-card p {
+    color: rgba(255, 255, 255, .9);
+}
+
+.stats {
+    display: grid;    
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    grid-column: 1 / -1;
+}
+@media (min-width: 768px) {
+    .stats {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (min-width: 1024px) {
+    .stats {
+        grid-column: span 2;
+    }
+}
+
+.stat-card {
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 25px;
+    border: 1px solid var(--border);
+    transition: .3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-6px);
+}
+
+.stat-card .icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    margin-bottom: 18px;
+}
+
+.income-icon {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+.expense-icon {
+    background: #FEE2E2;
+    color: #DC2626;
+}
+
+.saving-icon {
+    background: #FEF3C7;
+    color: #F59E0B;
+}
+
+.budget-icon {
+    background: #E0E7FF;
+    color: #4F46E5;
+}
+
+.stat-card h4 {
+    color: var(--text-light);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.stat-card h2 {
+    font-size: 24px;
+}
+
+/* ==========================================
+   TRANSACTIONS
+========================================== */
+
+.transactions {
+    margin-top: 30px;
+}
+
+.section-header {
+    margin-bottom: 20px;
+}
+
+#transaction-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.transaction-card {
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 15px;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: .3s;
+}
+
+@media (min-width: 768px) {
+    .transaction-card {
+        padding: 20px;
+    }
+}
+
+.transaction-card:hover {
+    transform: translateY(-3px);
+}
+
+.transaction-left {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.transaction-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #EEF2FF;
+    color: var(--primary);
+    font-size: 18px;
+}
+
+@media (min-width: 768px) {
+    .transaction-icon {
+        width: 50px;
+        height: 50px;
+    font-size: 20px;
+}
+
+.transaction-info h3 {
+    font-size: 17px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.transaction-info p {
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.transaction-right {
+    text-align: right;
+}
+
+.transaction-right h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.income-text {
+    color: var(--success);
+}
+
+.expense-text {
+    color: var(--danger);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.action-buttons button {
+    border: none;
+    background: var(--surface-hover);
+    padding: 8px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.action-buttons button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* ==========================================
+   FILTERS
+========================================== */
+
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.filters select {
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--surface);
+    font-size: 15px;
+    cursor: pointer;
+}
+
+@media (min-width: 768px) {
+    .filters {
+        gap: 15px;
+    }
+}
+
+/* ==========================================
+   CHARTS
+========================================== */
+
+.charts-section {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.chart-card {
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+}
+
+.chart-card h3 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.chart-card canvas {
+    max-height: 300px;
+}
+
+@media (min-width: 768px) {
+    .chart-card {
+        padding: 25px;
+    }
+}

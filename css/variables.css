@@ -1,0 +1,83 @@
+:root{
+
+    /* Font */
+
+    --font-family:'Poppins',sans-serif;
+
+    /* Colors */
+
+    --primary:#4F46E5;
+
+    --primary-hover:#4338CA;
+
+    --success:#22C55E;
+
+    --danger:#EF4444;
+
+    --warning:#F59E0B;
+
+    --background:#F8FAFC;
+
+    --surface:#FFFFFF;
+
+    --surface-hover:#F1F5F9;
+
+    --text:#0F172A;
+
+    --text-light:#64748B;
+
+    --border:#E2E8F0;
+
+    /* Radius */
+
+    --radius-sm:8px;
+
+    --radius:12px;
+
+    --radius-lg:18px;
+
+    /* Shadows */
+
+    --shadow-sm:
+        0 2px 8px rgba(15,23,42,.06);
+
+    --shadow:
+        0 8px 25px rgba(15,23,42,.08);
+
+    --shadow-lg:
+        0 15px 40px rgba(15,23,42,.12);
+
+    /* Animation */
+
+    --transition:.25s ease;
+
+}
+
+.backup-actions{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    margin:30px;
+
+}
+
+.backup-actions button,
+.import-btn{
+
+    padding:14px 22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    cursor:pointer;
+
+}

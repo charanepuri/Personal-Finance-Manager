@@ -1,0 +1,24 @@
+/* ==========================================
+   MAIN LAYOUT (Mobile First)
+========================================== */
+
+.app {
+    display: grid;
+    grid-template-rows: 1fr auto; /* main content, then sidebar (bottom nav) */
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+}
+
+.main {
+    padding: 15px;
+    padding-bottom: 85px; /* Space for bottom nav */
+}
+
+/* Hide scrollbar for the body */
+body {
+    scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+}

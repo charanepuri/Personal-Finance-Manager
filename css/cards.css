@@ -1,0 +1,165 @@
+/* ==========================================
+   DASHBOARD CARDS
+========================================== */
+
+.dashboard {
+
+    padding: 30px;
+
+    display: grid;
+
+    grid-template-columns: 2fr 1fr 1fr;
+
+    gap: 25px;
+
+}
+
+/* Main Balance Card */
+
+.balance-card {
+
+    background: linear-gradient(135deg,#4F46E5,#6366F1);
+
+    color: white;
+
+    border-radius: 22px;
+
+    padding: 35px;
+
+    min-height: 220px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    box-shadow: var(--shadow-lg);
+
+}
+
+.balance-card h3{
+
+    font-size:18px;
+
+    font-weight:500;
+
+    opacity:.9;
+
+}
+
+.balance-card h1{
+
+    font-size:48px;
+
+    margin:15px 0;
+
+    font-weight:700;
+
+}
+
+.balance-card p{
+
+    color:rgba(255,255,255,.9);
+
+}
+
+/* Small Cards */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:20px;
+
+}
+
+.stat-card{
+
+    background:var(--surface);
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:var(--shadow);
+
+    transition:.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.stat-card .icon{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    margin-bottom:18px;
+
+}
+
+.income-icon{
+
+    background:#DCFCE7;
+
+    color:#16A34A;
+
+}
+
+.expense-icon{
+
+    background:#FEE2E2;
+
+    color:#DC2626;
+
+}
+
+.saving-icon{
+
+    background:#FEF3C7;
+
+    color:#F59E0B;
+
+}
+
+.budget-icon{
+
+    background:#E0E7FF;
+
+    color:#4F46E5;
+
+}
+
+.stat-card h4{
+
+    color:var(--text-light);
+
+    margin-bottom:8px;
+
+    font-weight:500;
+
+}
+
+.stat-card h2{
+
+    font-size:28px;
+
+}

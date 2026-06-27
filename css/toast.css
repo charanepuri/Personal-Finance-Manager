@@ -1,0 +1,55 @@
+/* ==========================================
+   Toast
+========================================== */
+
+.toast{
+
+    position:fixed;
+
+    top:25px;
+
+    right:25px;
+
+    min-width:280px;
+
+    padding:16px 22px;
+
+    border-radius:14px;
+
+    color:white;
+
+    font-weight:500;
+
+    box-shadow:var(--shadow-lg);
+
+    transform:translateX(120%);
+
+    transition:.35s ease;
+
+    z-index:9999;
+
+}
+
+.toast.show{
+
+    transform:translateX(0);
+
+}
+
+.toast.success{
+
+    background:#16A34A;
+
+}
+
+.toast.error{
+
+    background:#DC2626;
+
+}
+
+.toast.warning{
+
+    background:#F59E0B;
+
+}
