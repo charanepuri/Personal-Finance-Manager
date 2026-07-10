@@ -4,13 +4,13 @@ const STORAGE_KEY = "theme";
 const themeToggleBtn = document.getElementById("theme-toggle");
 
 export function initializeTheme() {
-    const savedTheme = localStorage.getItem(STORAGE_KEY) || "light";
+    const savedTheme = localStorage.getItem(STORAGE_KEY) || "dark";
     applyTheme(savedTheme);
     themeToggleBtn.addEventListener("click", toggleTheme);
 }
 
-function toggleTheme() {
-    const currentTheme = localStorage.getItem(STORAGE_KEY) || "light";
+export function toggleTheme() {
+    const currentTheme = localStorage.getItem(STORAGE_KEY) || "dark";
     const newTheme = currentTheme === "light" ? "dark" : "light";
     applyTheme(newTheme);
     showToast(`Switched to ${newTheme} mode.`, "success");

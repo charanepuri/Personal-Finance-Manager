@@ -1,5 +1,4 @@
 import { updateReportsView } from "../controllers/reportController.js";
-import { initializeDashboard } from "../app.js"; // We need the filter logic
 
 export function renderReports(container) {
 

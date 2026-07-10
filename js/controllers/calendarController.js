@@ -1,5 +1,6 @@
 import { getTransactions } from "../storage/storage.js";
 import { APP } from "../config.js";
+import { getCategoryStyle } from "./transactionController.js";
 
 let currentDate = new Date();
 
@@ -40,6 +41,8 @@ function renderCalendar() {
         return transactionDate.getFullYear() === year && transactionDate.getMonth() === month;
     });
 
+    const todayStr = new Date().toISOString().split('T')[0];
+
     // Add empty cells for days before the 1st
     for (let i = 0; i < firstDayOfMonth; i++) {
         grid.insertAdjacentHTML("beforeend", "<div></div>");
@@ -49,9 +52,10 @@ function renderCalendar() {
     for (let day = 1; day <= daysInMonth; day++) {
         const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
         const hasTransactions = transactionsForMonth.some(t => t.date === dateStr);
+        const isToday = dateStr === todayStr;
 
         grid.insertAdjacentHTML("beforeend", `
-            <div class="day" data-date="${dateStr}">
+            <div class="day ${isToday ? 'today' : ''}" data-date="${dateStr}">
                 <span class="day-number">${day}</span>
                 ${hasTransactions ? '<div class="transaction-dot"></div>' : ''}
             </div>
@@ -83,6 +87,9 @@ function attachDayClickEvents() {
     document.querySelectorAll(".day").forEach(day => {
         day.addEventListener("click", (e) => {
             const date = e.currentTarget.dataset.date;
+            // Remove selected from others and add to current
+            document.querySelectorAll('.day.selected').forEach(d => d.classList.remove('selected'));
+            e.currentTarget.classList.add('selected');
             showTransactionsForDay(date);
         });
     });
@@ -110,14 +117,24 @@ function showTransactionsForDay(date) {
         content += transactions.map(transaction => {
             const amountClass = transaction.type === "income" ? "income-text" : "expense-text";
             const sign = transaction.type === "income" ? "+" : "-";
+            const categoryStyle = getCategoryStyle(transaction.category, transaction.type);
+            const iconClass = `fa-solid ${categoryStyle.icon}`;
+
             return `
                 <div class="transaction-card-mini">
-                    <div class="transaction-info">
-                        <strong>${transaction.category}</strong>
-                        <small>${transaction.paymentMethod}</small>
+                    <div class="transaction-left">
+                        <div class="transaction-icon" style="background-color: ${categoryStyle.color}20; color: ${categoryStyle.color};">
+                            <i class="${iconClass}"></i>
+                        </div>
+                        <div class="transaction-info">
+                            <h3>${transaction.category}</h3>
+                            <p>${transaction.paymentMethod}</p>
+                        </div>
                     </div>
-                    <div class="transaction-amount ${amountClass}">
+                    <div class="transaction-right">
+                        <h3 class="${amountClass}">
                         ${sign} ${APP.CURRENCY}${transaction.amount.toLocaleString('en-IN')}
+                        </h3>
                     </div>
                 </div>
             `;

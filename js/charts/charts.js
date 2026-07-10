@@ -7,31 +7,31 @@ export function renderCharts(filters){
 
     const transactions = getFilteredTransactions(filters);
 
-    const categoryTotals = {};
-
     let income = 0;
     let expense = 0;
+    const categoryTotals = {};
+    const expenseCategoryTotals = {};
 
     transactions.forEach(transaction=>{
-
         if(transaction.type==="income"){
-
             income += transaction.amount;
-
+            if (filters.type === 'income' || filters.type === 'all') {
+                categoryTotals[transaction.category] = (categoryTotals[transaction.category] || 0) + transaction.amount;
+            }
         }else{
-
             expense += transaction.amount;
+            expenseCategoryTotals[transaction.category] = (expenseCategoryTotals[transaction.category] || 0) + transaction.amount;
 
-            categoryTotals[transaction.category] =
-                (categoryTotals[transaction.category] || 0)
-                + transaction.amount;
-
+            if (filters.type === 'expense' || filters.type === 'all') {
+                categoryTotals[transaction.category] = (categoryTotals[transaction.category] || 0) + transaction.amount;
+            }
         }
-
     });
 
-    createExpenseChart(categoryTotals);
-
+    // On the main dashboard, the expense chart should only show expenses.
+    // On other pages, it shows what's relevant to that page's filter.
+    const dataForExpenseChart = filters.type === 'all' ? expenseCategoryTotals : categoryTotals;
+    createExpenseChart(dataForExpenseChart);
     createSummaryChart(income,expense);
 
 }
@@ -120,7 +120,7 @@ function createSummaryChart(income,expense){
 
     summaryChart = new Chart(ctx,{
 
-        type:"bar",
+        type:"pie",
 
         data:{
 
@@ -150,7 +150,7 @@ function createSummaryChart(income,expense){
 
                 legend:{
 
-                    display:false
+                    position:"bottom"
 
                 }
 

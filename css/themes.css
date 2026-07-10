@@ -1,8 +1,7 @@
 /* ==========================================
    LIGHT THEME (Default)
 ========================================== */
-
-:root {
+body.light-theme, :root {
 
     --primary: #4F46E5;
     --primary-hover: #4338CA;
@@ -27,8 +26,7 @@
    DARK THEME
 ========================================== */
 
-body.dark {
-
+body.dark-theme {
     --background: #0F172A;
     --surface: #1E293B;
     --surface-hover: #334155;

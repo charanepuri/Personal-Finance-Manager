@@ -1,7 +1,7 @@
 import { getTransactions, saveTransactions } from "../storage/storage.js";
 import { showToast } from "../ui/toast.js";
 import { showConfirmation } from "../ui/confirmation.js";
-import { renderTransactions } from "../ui/renderer.js";
+import { renderTransactions } from "../controllers/transactionController.js";
 
 /**
  * Triggers a file download in the browser.

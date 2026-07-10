@@ -9,7 +9,7 @@ import { createTransaction } from "./models/transaction.js";
 
 import { addTransaction } from "./storage/storage.js";
 
-import { renderTransactions } from "./ui/renderer.js";
+import { renderTransactions } from "./controllers/transactionController.js";
 
 import {
     getEditingId,
@@ -31,6 +31,14 @@ import {
 import {
     showConfirmation
 } from "./ui/confirmation.js";
+
+import {
+    renderDashboard
+} from "./controllers/dashboardController.js";
+
+import { updateDashboardSummary } from "./ui/summary.js";
+
+import { getFilterValues } from "./ui/filters.js";
 
 /* ==========================================
    DOM Elements
@@ -273,7 +281,7 @@ function handleTransaction(event) {
             showToast("Transaction added successfully.");
         }
 
-    renderTransactions();
+    renderDashboard();
 
     resetForm();
     
@@ -335,7 +343,7 @@ function resetApplication() {
     showConfirmation(
         "Are you sure you want to erase all data? This action cannot be undone.",
         () => {
-            localStorage.removeItem(APP.STORAGE_KEY);
+            localStorage.clear();
             renderTransactions();
             showToast(
                 "All data has been erased.",
@@ -349,40 +357,22 @@ function resetApplication() {
 /* ==========================================
    Dashboard Initialization
 ========================================== */
-
-export function initializeDashboard() {
-
-    // DOM Elements specific to dashboard
-    const filterType = document.getElementById("filter-type");
-    const filterMonth = document.getElementById("filter-month");
-    const filterYear = document.getElementById("filter-year");
-
+/**
+ * Initializes the entire application.
+ */
+function initializeApp() {
     // Initial data and UI updates
     updateGreeting();
     updateDate();
     setTodayDate();
     loadCategories(typeSelect.value);
     loadPaymentMethods();
-    loadYears();
-
-    // Attach event listeners for filters
-    if (filterType) {
-        filterType.addEventListener("change", renderTransactions);
-    }
-    if (filterMonth) {
-        filterMonth.addEventListener("change", renderTransactions);
-    }
-    if (filterYear) {
-        filterYear.addEventListener("change", renderTransactions);
-    }
-
-    // Initial render
-    renderTransactions();
 }
 
 // Global initializations
 initializeTheme();
 initializeNavigation();
+initializeApp();
 
 // Initial page load
 navigate("dashboard");

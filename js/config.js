@@ -45,6 +45,8 @@ export const INCOME_CATEGORIES = [
 
     "Gift",
 
+    "Catering Payment",
+
     "Other"
 
 ];
@@ -119,7 +121,9 @@ export const PAYMENT_METHODS = [
 
     "Wallet",
 
-    "Bank Transfer"
+    "Bank Transfer",
+
+    "Hybrid (UPI+Cash)"
 
 ];
 

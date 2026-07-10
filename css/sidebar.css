@@ -12,6 +12,7 @@
     border-top: 1px solid var(--border);
     display: flex;
     align-items: center;
+    justify-content: center;
     z-index: 1000;
 }
 
@@ -22,6 +23,7 @@
 .sidebar nav {
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
 }
 
@@ -30,16 +32,16 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 4px;
     color: var(--text-light);
-    padding: 5px 10px;
-    border-radius: 8px;
+    padding: 8px 12px;
+    border-radius: 10px;
     transition: color 0.2s, background-color 0.2s;
     font-size: 12px;
 }
 
 .sidebar nav a i {
-    font-size: 20px;
-    margin-bottom: 4px;
+    font-size: 18px;
 }
 
 .sidebar nav a span {
@@ -52,5 +54,4 @@
 
 .sidebar nav a.active {
     color: var(--primary);
-    background-color: var(--surface-hover);
 }

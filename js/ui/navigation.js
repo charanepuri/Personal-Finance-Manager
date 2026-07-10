@@ -1,12 +1,17 @@
-import { initializeDashboard, loadYears } from "../app.js";
-import { renderDashboard } from "../views/dashboardView.js";
+import { loadYears } from "../app.js";
+import { renderDashboard as renderDashboardView } from "../views/dashboardView.js";
 import { renderReports } from "../views/reportsView.js";
 import { renderCalendar } from "../views/calendarView.js";
 import { renderBudgets } from "../views/budgetsView.js";
 import { renderSettings } from "../views/settingsView.js";
+import { renderWishlist } from "../views/wishlistView.js";
+import { renderTransactionLog } from "../views/transactionLogView.js";
+import { initializeWishlist } from "../controllers/wishlistController.js";
 import { initializeCalendar } from "../controllers/calendarController.js";
 import { initializeBudgets } from "../controllers/budgetController.js";
 import { initializeSettings } from "../controllers/settingsController.js";
+import { renderDashboard } from "../controllers/dashboardController.js";
+import { renderTransactions } from "../controllers/transactionController.js";
 
 const content = document.getElementById("page-content");
 
@@ -50,8 +55,22 @@ export function navigate(view) {
     switch(view){
 
         case "dashboard":
-            renderDashboard(content);
-            initializeDashboard();
+            renderDashboardView(content);
+            renderDashboard(); // Renders transactions and summary
+            break;
+
+        case "income":
+            renderTransactionLog(content, { title: "Income Log", type: "income" });
+            loadYears();
+            renderTransactions(); // Render only the transaction list
+            document.querySelectorAll(".filters select").forEach(s => s.addEventListener("change", renderTransactions));
+            break;
+
+        case "expense":
+            renderTransactionLog(content, { title: "Expense Log", type: "expense" });
+            loadYears();
+            renderTransactions(); // Render only the transaction list
+            document.querySelectorAll(".filters select").forEach(s => s.addEventListener("change", renderTransactions));
             break;
 
         case "reports":
@@ -68,6 +87,11 @@ export function navigate(view) {
         case "budgets":
             renderBudgets(content);
             initializeBudgets();
+            break;
+
+        case "wishlist":
+            renderWishlist(content);
+            initializeWishlist();
             break;
 
         case "settings":

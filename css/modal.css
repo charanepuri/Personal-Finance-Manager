@@ -6,9 +6,9 @@
 
     position:fixed;
 
-    right:35px;
+    right:20px;
 
-    bottom:35px;
+    bottom:85px;
 
     width:65px;
 
@@ -32,6 +32,12 @@
 
     z-index:999;
 
+}
+
+@media (min-width: 768px) {
+    .fab {
+        right: 35px;
+    }
 }
 
 .fab:hover{
@@ -77,9 +83,9 @@
 
     background:var(--surface);
 
-    border-radius:20px;
+    border-radius:18px;
 
-    padding:30px;
+    padding:20px;
 
     animation:popup .3s ease;
 
@@ -87,6 +93,12 @@
 
 body.modal-open {
     overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .modal-content {
+        padding: 30px;
+    }
 }
 
 @keyframes popup{
